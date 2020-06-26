@@ -1,0 +1,10 @@
+{
+    "name": "PHP Workflow",
+    "description": "PHP CI workflow template.",
+    "categories": [
+        "PHP"
+    ],
+    "filePatterns": [
+        "composer.json$"
+    ]
+}
