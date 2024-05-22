@@ -1,0 +1,40 @@
+# yamllint disable rule:document-start
+# https://docs.github.com/actions
+
+name: Lint
+
+on:
+  push:
+    branches-ignore:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_call:
+    inputs:
+      exclude:
+        required: false
+        default: ''
+        type: string
+        description: Regex filter of path to exclude
+
+permissions:
+  contents: read
+
+jobs:
+  super-linter:
+    name: Super Linter
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Lint Code Base
+        uses: super-linter/super-linter/slim@v6.5.0
+        env:
+          VALIDATE_ALL_CODEBASE: false
+          DEFAULT_BRANCH: main
+          GITHUB_TOKEN: ${{ github.token }}
+          FILTER_REGEX_EXCLUDE: ${{ inputs.exclude }}
