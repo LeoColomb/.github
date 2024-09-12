@@ -1,0 +1,33 @@
+# yamllint disable rule:document-start
+# https://docs.github.com/actions
+
+name: Auto-close
+
+on:
+  schedule:
+    - cron: '30 1 * * *'
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  stale:
+    name: Stale
+    runs-on: ubuntu-latest
+    steps:
+      - name: Close stale issues and PRs
+        uses: actions/stale@v9
+        with:
+          stale-issue-message: |
+            This issue has been open for 15 days without any activity, and the maintainers are unsure of its validity.
+            Do not hesitate to provide further details about your request, and be sure to address any queries raised by the maintainers.
+            Otherwise, the issue will be closed automatically after 7 days.
+          stale-pr-message: |
+            This pull request has been open for 15 days without any activity, and the maintainers are unsure of its validity.
+            Do not hesitate to provide further details about your contribution, and be sure to address any queries raised by the maintainers.
+            Otherwise, the pull request will be closed automatically after 7 days.
+          days-before-stale: 15
+          only-labels: 'awaiting-feedback,awaiting-answers,invalid'
+          labels-to-remove-when-unstale: 'awaiting-feedback,awaiting-answers,invalid'
