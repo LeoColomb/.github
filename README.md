@@ -1,6 +1,6 @@
 # .github
 
-> Default [community health files](https://help.github.com/en/articles/creating-a-default-community-health-file-for-your-organization) for [Léo Colombaro](https://colombaro.fr/)'s projects on GitHub.
+> 🙏 Default [community health files](https://docs.github.com/communities/setting-up-your-project-for-healthy-contributions/creating-a-default-community-health-file) for [Léo Colombaro](https://colombaro.fr/)'s projects on GitHub.
 
 ## License
 
