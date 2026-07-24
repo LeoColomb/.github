@@ -90,9 +90,9 @@ jobs:
       github.event_name == 'pull_request' &&
       github.ref_name != github.event.repository.default_branch &&
       !endsWith(github.actor, '[bot]')
-    permissions:
-      contents: write
-      packages: read
+    # permissions:
+    #   contents: write
+    #   packages: read
     steps:
       - name: Generate token
         uses: actions/create-github-app-token@v3
